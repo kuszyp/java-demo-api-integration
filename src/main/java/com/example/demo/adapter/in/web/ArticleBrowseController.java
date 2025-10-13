@@ -1,7 +1,6 @@
 package com.example.demo.adapter.in.web;
 
-import com.example.demo.application.domain.service.ArticleBrowser;
-import com.example.demo.application.port.in.ArticleBrowserUseCase;
+import com.example.demo.application.port.in.BrowseArticlesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,7 @@ public interface ArticleBrowseController {
 @RequiredArgsConstructor
 class ArticleBrowseControllerImpl implements ArticleBrowseController {
 
-  private final ArticleBrowserUseCase articleBrowser;
+  private final BrowseArticlesService articleBrowser;
 
   @Override
   public ResponseEntity<?> getArticles() {

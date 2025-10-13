@@ -1,3 +1,3 @@
 package com.example.demo.application.port.in;
 
-public interface ArticleBrowserUseCase {}
+public interface BrowseArticlesService {}
