@@ -6,7 +6,7 @@ plugins {
 
 group = 'pl.myapp.java'
 version = '0.0.1-SNAPSHOT'
-description = 'Demo project for Spring Boot'
+description = 'Java demo api integration application'
 
 java {
     toolchain {

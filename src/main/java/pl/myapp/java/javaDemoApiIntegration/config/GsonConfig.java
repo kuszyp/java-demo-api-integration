@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GsonConfig {
 
-//  @Bean
-//  public Gson gson() {
-//    return new GsonBuilder()
-//      .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-//      .create();
-//  }
+  @Bean
+  public Gson gson() {
+    return new GsonBuilder()
+      .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+      .create();
+  }
 }

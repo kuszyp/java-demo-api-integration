@@ -7,8 +7,6 @@ import java.util.List;
 /**
  * Outgoing REST port for listing Articles
  */
-public interface ArticleRestOutPort {
-  List<Article> findLatestArticles(int numberOfArticles);
-
-  List<Article> findLatestUnreadArticles(int numberOfArticles);
+public interface ArticleRestRepository {
+  List<Article> findLatestArticles(int limit, int offset);
 }

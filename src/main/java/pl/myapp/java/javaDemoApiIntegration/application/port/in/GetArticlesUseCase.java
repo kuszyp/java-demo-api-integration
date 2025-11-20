@@ -11,5 +11,5 @@ public interface GetArticlesUseCase {
 
   List<Article> getLatestArticles(int limit);
 
-  List<Article> getUnreadArticles(int limit);
+  List<Article> getLatestUnreadArticles(int limit);
 }

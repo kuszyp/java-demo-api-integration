@@ -3,10 +3,9 @@ package pl.myapp.java.javaDemoApiIntegration.adapter.out.rest;
 import com.google.gson.annotations.SerializedName;
 import pl.myapp.java.javaDemoApiIntegration.domain.model.article.Article;
 
-import java.time.Instant;
 import java.util.List;
 
-public record SpaceflightArticlesResponse(
+record SpaceflightArticlesResponse(
     int count,
     String next,
     String previous,

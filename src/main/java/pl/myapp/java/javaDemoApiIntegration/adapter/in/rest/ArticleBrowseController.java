@@ -17,10 +17,10 @@ import static pl.myapp.java.javaDemoApiIntegration.adapter.in.rest.RestCommons.c
 public interface ArticleBrowseController {
 
   @GetMapping("")
-  public List<UserArticleResponse> getLatestArticles(@RequestParam int limit);
+  List<UserArticleResponse> getLatestArticles(@RequestParam int limit);
 
   @GetMapping("/unread")
-  public List<UserArticleResponse> getLatestUnreadArticles();
+  List<UserArticleResponse> getLatestUnreadArticles();
 }
 
 @RestController

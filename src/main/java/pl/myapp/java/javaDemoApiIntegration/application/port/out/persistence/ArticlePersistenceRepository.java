@@ -7,7 +7,7 @@ import java.util.Optional;
 /**
  * A repository to handle articles that was already read by the user
  */
-public interface ArticlePersistenceOutPort {
+public interface ArticlePersistenceRepository {
   void save(Article article);
 
   Optional<Article> findById(int id);
