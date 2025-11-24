@@ -1,14 +1,15 @@
 package pl.myapp.java.javaDemoApiIntegration.application.port.out.persistence;
 
-import pl.myapp.java.javaDemoApiIntegration.domain.model.article.Article;
-
+import java.util.Collection;
 import java.util.Optional;
 
-/**
- * A repository to handle articles that was already read by the user
- */
-public interface ArticlePersistenceRepository {
-  void save(Article article);
+/** A repository to handle articles that was already read by the user */
+public interface ArticlePersistenceRepository<E> {
+  void save(E article);
 
-  Optional<Article> findById(int id);
+  void saveAll(Collection<E> collection);
+
+  Optional<E> findById(int id);
+
+  int size();
 }
