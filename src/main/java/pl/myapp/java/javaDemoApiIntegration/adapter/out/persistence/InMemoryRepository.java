@@ -13,7 +13,6 @@ public class InMemoryRepository implements PersistenceRepository<Article> {
 
   private final ConcurrentMap<Integer, Article> storage = new ConcurrentHashMap<>();
 
-
   @Override
   public void save(Article element) {
     storage.put(element.id(), element);

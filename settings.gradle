@@ -1,12 +1,14 @@
 rootProject.name = 'JavaDemoApiIntegration'
 
-dependencyResolutionManagement {
-  repositories {
-    mavenCentral()
-  }
-  versionCatalogs {
-    create("libs") {
-      from(files("./versions.toml"))
-    }
-  }
-}
+//TODO Create a snippet with dependencyResolutionManagement section and repositories setup
+//dependencyResolutionManagement {
+//  repositories {
+//    mavenCentral()
+//  }
+//  TODO Create a snippet with the below code to setup custom versions.toml location
+//  versionCatalogs {
+//    create("libs") {
+//      from(files("./versions.toml"))
+//    }
+//  }
+//}
