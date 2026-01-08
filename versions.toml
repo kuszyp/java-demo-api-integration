@@ -1,0 +1,14 @@
+[versions]
+junit-jupiter = '5.11.3'
+
+[libraries]
+gson = { module = 'com.google.code.gson:gson', version = '2.13.1' }
+groovy = { module = 'org.apache.groovy:groovy', version = '4.0.22' }
+junit-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'junit-jupiter' }
+junit-jupiter-engine = { module = 'org.junit.jupiter:junit-jupiter-engine', version.ref = 'junit-jupiter' }
+assertj = { module = 'org.assertj:assertj-core', version = '3.26.3' }
+#mockito = { module = 'org.mockito:mockito-core', version = '5.14.0'}
+
+[plugins]
+spring-boot = { id = 'org.springframework.boot', version = '3.5.6' }
+spring-dependency-mamagement = { id = 'io.spring.dependency-management', version = '1.1.7' }

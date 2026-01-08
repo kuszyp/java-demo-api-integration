@@ -1,7 +1,8 @@
 plugins {
-    id 'java'
-    id 'org.springframework.boot' version '3.5.6'
-    id 'io.spring.dependency-management' version '1.1.7'
+  alias libs.plugins.spring.boot
+  alias libs.plugins.spring.dependency.mamagement
+  id 'java'
+  id 'groovy'
 }
 
 group = 'pl.myapp.java'
@@ -9,33 +10,66 @@ version = '0.0.1-SNAPSHOT'
 description = 'Java demo api integration application'
 
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
 }
 
 configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
-repositories {
-    mavenCentral()
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
+//  mockitoAgent
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation 'jakarta.validation:jakarta.validation-api:3.1.1'
-    implementation 'com.google.code.gson:gson:2.13.1'
+  compileOnly 'org.projectlombok:lombok'
+  annotationProcessor 'org.projectlombok:lombok'
 
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-webflux'
+//  implementation 'jakarta.validation:jakarta.validation-api:3.1.1'
+  implementation libs.gson
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation libs.groovy
+  testImplementation libs.junit.jupiter.api
+  testImplementation libs.assertj
+
+  testRuntimeOnly libs.junit.jupiter.engine
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+tasks.named('test', Test) {
+  useJUnitPlatform()
+
+  jvmArgs += "-javaagent:${configurations.mockitoAgent.asPath}"
+
+  testLogging {
+    events 'failed', 'passed', 'skipped'
+    exceptionFormat = 'full'
+    showExceptions = true
+    showCauses = true
+    showStackTraces = true
+
+//    set options for log level DEBUG and INFO
+    debug {
+      events 'started', 'skipped', 'failed', 'passed', 'standard_error', 'standard_out'
+      exceptionFormat = 'full'
+    }
+
+    info {
+      events 'started', 'skipped', 'failed', 'passed', 'standardError', 'standardOut'
+      exceptionFormat = 'full'
+    }
+  }
+}
+
+tasks.withType(JavaCompile).configureEach {
+  options.encoding = 'UTF-8'
+}
+
+tasks.withType(GroovyCompile).configureEach {
+  options.incremental = true
+  options.incrementalAfterFailure = true
+  options.forkOptions.jvmArgs += ["-Xms128m", "-Xmx256m", "-XX:MaxMetaspaceSize=128m", "-XX:+UseParallelGC"]
 }

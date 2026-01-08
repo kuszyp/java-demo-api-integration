@@ -4,7 +4,7 @@ import java.util.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.myapp.java.javaDemoApiIntegration.application.port.in.GetArticlesUseCase;
-import pl.myapp.java.javaDemoApiIntegration.application.port.out.persistence.ArticlePersistenceRepository;
+import pl.myapp.java.javaDemoApiIntegration.application.port.out.persistence.PersistenceRepository;
 import pl.myapp.java.javaDemoApiIntegration.application.port.out.rest.ArticleRestRepository;
 import pl.myapp.java.javaDemoApiIntegration.domain.model.article.Article;
 
@@ -15,7 +15,7 @@ public class GetArticlesService implements GetArticlesUseCase {
   private static final int DEFAULT_OFFSET = 0;
   private static final int MAX_ITERATIONS = 10;
   private final ArticleRestRepository articleRestRepository;
-  private final ArticlePersistenceRepository persistenceRepository;
+  private final PersistenceRepository<Article> persistenceRepository;
 
   @Override
   public List<Article> getLatestArticles(int limit) {

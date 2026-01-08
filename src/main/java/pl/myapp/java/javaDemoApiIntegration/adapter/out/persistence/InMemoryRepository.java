@@ -5,18 +5,18 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import org.springframework.stereotype.Repository;
-import pl.myapp.java.javaDemoApiIntegration.application.port.out.persistence.ArticlePersistenceRepository;
+import pl.myapp.java.javaDemoApiIntegration.application.port.out.persistence.PersistenceRepository;
 import pl.myapp.java.javaDemoApiIntegration.domain.model.article.Article;
 
 @Repository
-public class InMemoryArticleRepository implements ArticlePersistenceRepository<Article> {
+public class InMemoryRepository implements PersistenceRepository<Article> {
 
   private final ConcurrentMap<Integer, Article> storage = new ConcurrentHashMap<>();
 
 
   @Override
-  public void save(Article article) {
-    storage.put(article.id(), article);
+  public void save(Article element) {
+    storage.put(element.id(), element);
   }
 
   @Override
