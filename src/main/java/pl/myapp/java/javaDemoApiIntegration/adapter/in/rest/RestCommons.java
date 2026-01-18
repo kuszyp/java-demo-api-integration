@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 public final class RestCommons {
   private RestCommons() {}
 
-
   public static ClientErrorException clientErrorException(HttpStatus status, String message) {
     return new ClientErrorException(errorResponse(status, message));
   }

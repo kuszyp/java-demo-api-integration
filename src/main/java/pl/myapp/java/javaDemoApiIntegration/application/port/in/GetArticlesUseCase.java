@@ -1,12 +1,9 @@
 package pl.myapp.java.javaDemoApiIntegration.application.port.in;
 
+import java.util.List;
 import pl.myapp.java.javaDemoApiIntegration.domain.model.article.Article;
 
-import java.util.List;
-
-/**
- * Use case: Retrieving articles list
- */
+/** Use case: Retrieving articles list */
 public interface GetArticlesUseCase {
 
   List<Article> getLatestArticles(int limit);

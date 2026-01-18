@@ -31,9 +31,9 @@ public class GetArticlesService implements GetArticlesUseCase {
       int requestLimit = limit - unreadArticles.size();
       List<Article> articles = articleRestRepository.findLatestArticles(requestLimit, offset);
       unreadArticles.addAll(
-        articles.stream()
-          .filter(article -> persistenceRepository.findById(article.id()).isEmpty())
-          .toList());
+          articles.stream()
+              .filter(article -> persistenceRepository.findById(article.id()).isEmpty())
+              .toList());
       offset += requestLimit;
     }
 
